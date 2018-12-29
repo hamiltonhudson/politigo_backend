@@ -29,7 +29,7 @@ class Api::V1::EventsController < ApplicationController
 
 private
   def event_params
-    params.require(:event).permit(:location, :date, :time)
+    params.require(:event).permit(:cause, :location)
   end
 
   def find_event
