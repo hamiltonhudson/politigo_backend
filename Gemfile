@@ -31,6 +31,15 @@ gem 'rack-cors'
 # use AMS to specify the shape of our JSON response
 gem 'active_model_serializers', '~> 0.10.0'
 
+#create fake data for seeds.rb
+gem 'faker', '~> 1.9', '>= 1.9.1'
+gem 'ffaker', '~> 2.10'
+
+#clean database without affecting schema in order to re-seed
+gem 'database_cleaner', '~> 1.7'
+
+require 'rubygems'
+require 'active_support/all'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# require 'database_cleaner'
+# require 'faker'
+# require 'ffaker'
+#
+# DatabaseCleaner.clean_with(:truncation)

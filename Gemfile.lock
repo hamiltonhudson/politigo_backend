@@ -56,7 +56,11 @@ GEM
       activesupport
     concurrent-ruby (1.1.4)
     crass (1.0.4)
+    database_cleaner (1.7.0)
     erubi (1.8.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
+    ffaker (2.10.0)
     ffi (1.9.25)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -145,6 +149,9 @@ DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   bootsnap (>= 1.1.0)
   byebug
+  database_cleaner (~> 1.7)
+  faker (~> 1.9, >= 1.9.1)
+  ffaker (~> 2.10)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
