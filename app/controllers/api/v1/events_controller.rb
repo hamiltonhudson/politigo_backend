@@ -53,7 +53,7 @@ class Api::V1::EventsController < ApplicationController
 
 private
   def event_params
-    params.require(:event).permit(:cause, :location)
+    params.require(:event).permit(:cause, :style, :location, :date, :time)
   end
   # ---or---
   # Only allow a trusted parameter "white list" through.

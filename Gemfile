@@ -38,8 +38,8 @@ gem 'ffaker', '~> 2.10'
 #clean database without affecting schema in order to re-seed
 gem 'database_cleaner', '~> 1.7'
 
-require 'rubygems'
-require 'active_support/all'
+# require 'rubygems'
+# require 'active_support/all'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
