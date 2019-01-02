@@ -1,5 +1,5 @@
 class Api::V1::EventsController < ApplicationController
-  # before_action :set_event, only: [:show, :update, :destroy]
+  before_action :find_event, only: [:show, :update, :destroy]
 
   # GET /events
   def index
@@ -28,22 +28,22 @@ class Api::V1::EventsController < ApplicationController
   # end
 
   # PATCH/PUT /events/1
-  # def update
-  #   @event.update(event_params)
-  #   render json: @event, status: 202
+  def update
+    # @event.update(event_params)
+    # render json: @event, status: 202
   # ---or---
-  #   if @event.save
-  #     render json: @event, status: :accepted
-  #   else
-  #     render json: {errors: @event.errors.full_messages}, status: :unprocessible_entity
-  #   end
+    # if @event.save
+    #   render json: @event, status: :accepted
+    # else
+    #   render json: {errors: @event.errors.full_messages}, status: :unprocessible_entity
+    # end
   # ---or---
-  #   if @event.update(event_params)
-  #     render json: @event
-  #   else
-  #     render json: @event.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @event.update(event_params)
+      render json: @event
+    else
+      render json: @event.errors, status: :unprocessable_entity
+    end
+  end
 
   # DELETE /events/1
   # def destroy
