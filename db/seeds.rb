@@ -12,7 +12,7 @@
 #
 DatabaseCleaner.clean_with(:truncation)
 
-2.times { User.create!({name: FFaker::Name.unique.name}) }
+1.times { User.create!({name: FFaker::Name.unique.name}) }
 
 causes = ['climate change', 'immigration', 'healthcare', 'women\'s rights', 'minority rights', 'union/workers rights', 'foreign relations', 'economy/taxes/inflation', 'jobs & job creation']
 
@@ -23,6 +23,6 @@ styles = ['protest demonstration (march or rally)', 'meet-and-greet', 'fundraise
 user_ids = User.all.map {|user| user.id}
 event_ids = Event.all.map {|event| event.id}
 
-8.times {
-  UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample})
-}
+# 8.times {
+#   UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample})
+# }

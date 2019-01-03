@@ -52,7 +52,7 @@ class Api::V1::UsersController < ApplicationController
 
 private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :score)
   end
   # ---or---
   # Use callbacks to share common setup or constraints between actions.

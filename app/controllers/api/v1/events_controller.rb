@@ -1,5 +1,5 @@
 class Api::V1::EventsController < ApplicationController
-  before_action :find_event, only: [:show, :update, :destroy]
+  # before_action :find_event, only: [:show, :update, :destroy]
 
   # GET /events
   def index
@@ -27,8 +27,41 @@ class Api::V1::EventsController < ApplicationController
   #   end
   # end
 
+  def add
+    #byebuge
+    event = Event.find(params[:id])
+    user = current_user
+    user.events << event
+    #byebug
+    # (validation that user cannot sign up for same event more that once)
+    render json: {status:"worked"}
+  end
+
+  def remove
+    #byebuge
+    user = current_user
+    event = user.events.find(params[:id])
+    # byebug
+    # found_user_event = UserEvent.find { |event| event.id == found_event.id }
+    user.events.delete(event)
+    # found_user_event.delete
+    # byebug
+    #byebug
+    render json: {status:"worked"}
+  end
+  #
+  # def remove
+  #   event = Event.find(params[:id])
+  #   user = current_user
+  #   user.events.delete(event)
+  #   # render json: {status:"worked"}
+  # end
+
+
+
   # PATCH/PUT /events/1
   def update
+    find_event
     # @event.update(event_params)
     # render json: @event, status: 202
   # ---or---
@@ -46,14 +79,14 @@ class Api::V1::EventsController < ApplicationController
   end
 
   # DELETE /events/1
-  # def destroy
-  #   @event.destroy
-  # end
+  def destroy
+    @event.destroy
+  end
 
 
 private
   def event_params
-    params.require(:event).permit(:cause, :style, :location, :date, :time)
+    params.permit(:cause, :style, :location, :date, :time)
   end
   # ---or---
   # Only allow a trusted parameter "white list" through.
