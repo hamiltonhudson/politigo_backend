@@ -20,15 +20,20 @@ styles = ['protest demonstration (march or rally)', 'meet-and-greet', 'fundraise
 
 
 addresses = [
-  {address: '549 Vale St. Brooklyn, NY 11224', long: '40.579930', lat: '-74.001640'},
-  {address: '815 E. Essex Lane Staten Island, NY 10306', long: '40.582660', lat: '-74.157140'},
-  {address: '706 South Mill Pond St. Bronx, NY 10461', long: '40.697440', lat: '-73.979440'},
-  {address: '24 E. Chestnut Street New York, NY 10009', long: '43.231450', lat: '-75.442450'},
-  {address: '275 East Pearl Court Brooklyn, NY 11207', long: '40.659520', lat: '-73.922070'}
+  {address: '549 Vale St. Brooklyn, NY 11224', lat: '40.579930', long: '-74.001640'},
+  {address: '815 E. Essex Lane Staten Island, NY 10306', lat: '40.582660', long: '-74.157140'},
+  {address: '90 W 164th St, Bronx, NY 10452', lat: '40.832520', long: '-73.928871'},
+  {address: '24 E. 4th Street New York, NY 10009', lat: '40.724270', long: '-73.984830'},
+  {address: '275 East Pearl Court Brooklyn, NY 11207', lat: '40.659520', long: '-73.922070'},
+  {address: '452 5th Ave New York, NY 10018', lat: '40.752209', long: '-73.982239'},
+  {address: '190 W 100th St New York, NY 10025', lat: '40.796090', long: '-73.968520'},
+  {address: '52 Chambers St New York, NY 10007', lat: '40.713370', long: '-74.005540'},
+  {address: '23-15 Newtown Ave Astoria, NY 11102', lat: '40.769560', long: '-73.922620'},
+  {address: '345 Brook Ave, Bronx, NY 10454', lat: '40.810230', long: '-73.917870'},
 ]
 
 addresses.each do |address|
-  Event.create!({cause: causes.sample, style: styles.sample, location: address, date: Faker::Date.between(Date.parse('04/01/2019'), Date.parse('15/02/2019')), time: Faker::Time.forward(1, :day).strftime('%H:00')})
+  Event.create!({cause: causes.sample, style: styles.sample, location: address[:address], lat: address[:lat], long: address[:long], date: Faker::Date.between(Date.parse('04/01/2019'), Date.parse('15/02/2019')), time: Faker::Time.forward(1, :day).strftime('%H:00')})
 end
 # location.first.update (then update for each one )
 user_ids = User.all.map {|user| user.id}
