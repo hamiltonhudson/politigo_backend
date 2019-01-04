@@ -34,7 +34,6 @@ class Api::V1::EventsController < ApplicationController
     user.events.includes(event)
     # if !user.events.includes(event)
     user.events << event
-    user.score += 10
     render json: {status:"worked"}
     # else
     #byebug
