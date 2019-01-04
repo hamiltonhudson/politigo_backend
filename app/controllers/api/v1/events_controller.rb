@@ -31,14 +31,16 @@ class Api::V1::EventsController < ApplicationController
     #byebuge
     event = Event.find(params[:id])
     user = current_user
-    if !user.events.includes(event)
-      user.events << event
-      render json: {status:"worked"}
-    else
+    user.events.includes(event)
+    # if !user.events.includes(event)
+    user.events << event
+    user.score += 10
+    render json: {status:"worked"}
+    # else
     #byebug
     # (validation that user cannot sign up for same event more that once)
-    render json: {status:"already signed up"}
-    end
+    # render json: {status:"already signed up"}
+    # end
   end
 
   def remove
