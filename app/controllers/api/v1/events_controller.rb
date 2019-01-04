@@ -28,19 +28,17 @@ class Api::V1::EventsController < ApplicationController
   # end
 
   def add
-    #byebuge
     event = Event.find(params[:id])
     user = current_user
-    # if user.events.includes(event)
-    # if !user.events.includes(event)
-    user.events << event
-    user.score += 10
-    user.save
-    render json: {event: event, user: user, status:"worked"}
-  # else
-    # (validation that user cannot sign up for same event more that once)
-    # render json: {status:"already signed up"}
-    # end
+    ue = UserEvent.new(user: user, event: event)
+    if ue.save
+      user.score += 10
+      user.save
+      render json: {event: event, user: user, status:"worked"}
+    else
+      # (validate/ensure that user cannot sign up for same event more that once)
+      render json: {status: "Not saved", errors: ue.errors.full_messages}
+    end
   end
 
   def remove
