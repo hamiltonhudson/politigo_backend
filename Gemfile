@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.3'
+ruby '2.6.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
@@ -38,7 +38,7 @@ gem 'ffaker', '~> 2.10'
 #clean database without affecting schema in order to re-seed
 gem 'database_cleaner', '~> 1.7'
 
-# require 'rubygems'
+require 'rubygems'
 # require 'active_support/all'
 
 group :development, :test do

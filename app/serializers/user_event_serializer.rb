@@ -1,3 +1,5 @@
 class UserEventSerializer < ActiveModel::Serializer
-  attributes :id, :cause, :style, :location, :lat, :long, :date, :time
+  attributes :id, :user_id, :event_id
+  has_one :user, serializer: UserSerializer
+  has_one :event, serializer: EventSerializer
 end
