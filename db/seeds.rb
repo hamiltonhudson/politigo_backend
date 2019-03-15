@@ -9,9 +9,9 @@
 DatabaseCleaner.clean_with(:truncation)
 
 # 1.times { User.create!({name: FFaker::Name.unique.name}) }
-# User.create!({ name: 'Gabrielle Bellini' })
-# User.create!({ name: 'Darden Callaway' })
-# User.create!({ name: 'Clement Hargrave' })
+User.create!({ name: 'Gabrielle Bellini' })
+User.create!({ name: 'Darden Callaway' })
+User.create!({ name: 'Clement Hargrave' })
 
 causes = ['climate change', 'immigration', 'healthcare', 'women\'s rights', 'minority rights', 'union/workers rights', 'foreign relations', 'economy/taxes/inflation', 'jobs & job creation']
 

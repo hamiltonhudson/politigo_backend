@@ -6,7 +6,6 @@ class Api::V1::UserEventsController < ApplicationController
 
   def create
     @ue = UserEvent.create(ue_params)
-    # if @ue.save
     if @ue.valid?
       @ue.user.increase_score
       @event = Event.find { |event| event.id == @ue.event_id}
@@ -23,13 +22,11 @@ class Api::V1::UserEventsController < ApplicationController
    @user = @ue.user
    @ue.destroy
    render json: @user, status: 201
-   # render json: {status: "removed", user: @user, status: 201}
  end
 
 
   private
     def ue_params
-      # params.permit(:event_id, :user_id)
       params.require(:user_event).permit(:user_id, :event_id)
     end
 
