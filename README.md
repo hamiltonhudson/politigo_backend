@@ -51,10 +51,10 @@ and once the terminal says it’s running, navigate to http://localhost:3000. If
 **Hamilton Hudson**
 
 ≫ ehamiltonhudson@gmail.com<br/>
-↳ LinkedIn: https://www.linkedin.com/in/hamiltonhudson<br/>
-↳ Website: https://hamiltonhudson.myportfolio.com<br/>
-↳ Blog: https://ehhudson.wordpress.com<br/>
-↳ Twitter: https://twitter.com/HamiltonHudson
+↳ *LinkedIn*: https://www.linkedin.com/in/hamiltonhudson<br/>
+↳ *Website*: https://hamiltonhudson.myportfolio.com<br/>
+↳ *Blog*: https://ehhudson.wordpress.com<br/>
+↳ *Twitter*: https://twitter.com/HamiltonHudson
 
 ## License
 
