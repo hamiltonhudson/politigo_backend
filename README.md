@@ -58,4 +58,4 @@ https://drive.google.com/open?id=1zC7ayZOjkz4l55mITPli6FLy7Jpsf2_V
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](../politigo_backend/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE.md](../blob/master/LICENSE) file for details.
