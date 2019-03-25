@@ -11,7 +11,7 @@ JavaScript, Ruby on Rails, Google Places API, HTML, CSS, JSON, Materialize CDN &
 ## Getting Started
 
 ### Prerequisites
-To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed (if you don’t, visit this link for instructions: Digital Ocean: Install Ruby and Set Up Local Environment) as well as PostgreSQL as the database resource. 
+To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed (if you don’t, visit this link for instructions: [Digital Ocean: Install Ruby and Set Up Local Environment](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-and-set-up-a-local-programming-environment-on-macos) as well as PostgreSQL as the database resource. 
 
 ### Installing
 The project gemfile specifies Ruby 2.6.0, but was created with 2.5.3 so make sure you have Ruby 2.5.3 or higher. Open terminal and in the root of the project directory run:
@@ -36,15 +36,15 @@ to create a starter list of events. If the development database is running corre
 
  `rails s`
 
-and once the terminal says it’s running, navigate to http://localhost:3000. If there’s  “Yay! You’re on Rails!” welcome page, then you can visit http://localhost:3000/api/v1/users or http://localhost:3000/api/v1/events or http://localhost:3000/api/v1/user_events to check that all the data is being rendered properly. If so, it’s time for the frontend (link below). 🤙🏼
+and once the terminal says it’s running, navigate to http://localhost:3000. If there’s  “Yay! You’re on Rails!” welcome page, then you can visit http://localhost:3000/api/v1/users or [api/v1/events](http://localhost:3000/api/v1/events) or [api/v1/user_events](http://localhost:3000/api/v1/user_events) to check that all the data is being rendered properly. If so, it’s time for the frontend (link below). 🤙🏼
 
 ## Frontend Link
 
-https://github.com/ehamiltonhudson/politigo_frontend
+[politigo_frontend](https://github.com/ehamiltonhudson/politigo_frontend)
 
 ## Demo Video
 
-https://drive.google.com/open?id=1zC7ayZOjkz4l55mITPli6FLy7Jpsf2_V
+[politigo.mov](https://drive.google.com/open?id=1zC7ayZOjkz4l55mITPli6FLy7Jpsf2_V)
 
 ## Authors
 
