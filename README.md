@@ -11,7 +11,7 @@ JavaScript, Ruby on Rails, Google Places API, HTML, CSS, JSON, Materialize CDN &
 ## Getting Started
 
 ### Prerequisites
-To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed (if you don’t, visit this link for instructions: [Digital Ocean: Install Ruby and Set Up Local Environment](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-and-set-up-a-local-programming-environment-on-macos) as well as PostgreSQL as the database resource. 
+To use, clone down this repo and open with your preferred text editor. This project uses Ruby on Rails, so you’ll need to make sure you have both installed (if you don’t, visit this link for instructions: [Digital Ocean: Install Ruby and Set Up Local Environment](https://www.digitalocean.com/community/tutorials/how-to-install-ruby-and-set-up-a-local-programming-environment-on-macos) as well as PostgreSQL as the database resource.
 
 ### Installing
 The project gemfile specifies Ruby 2.6.0, but was created with 2.5.3 so make sure you have Ruby 2.5.3 or higher. Open terminal and in the root of the project directory run:
@@ -32,7 +32,7 @@ and jump into the console to test out that tables and relationships were establi
 
 `rails db:seed`
 
-to create a starter list of events. If the development database is running correctly, then the seed data should be successfully created and final step is to test the server. To activate it, run: 
+to create a starter list of events. If the development database is running correctly, then the seed data should be successfully created and final step is to test the server. To activate it, run:
 
  `rails s`
 
@@ -44,7 +44,7 @@ and once the terminal says it’s running, navigate to http://localhost:3000. If
 
 ## Demo Video
 
-[PolitiGo.mov](https://drive.google.com/file/d/1eXNeKp4y4GuBRNGw6EdKM_0191XIzOVq/view)
+[PolitiGo.mov](https://drive.google.com/file/d/1UgnaBviEsv_wpKswC5KCTg3gODIdR2mI/view)
 
 ## Authors
 
