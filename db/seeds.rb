@@ -6,41 +6,54 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'dotenv'
+
+APP_ID = ENV['APP_ID']
+EVENTS_API_KEY = ENV['EVENTS_API_KEY']
+GEO_API_KEY = ENV['GEO_API_KEY']
+CITY_API_KEY = ENV['CITY_API_KEY']
+
 DatabaseCleaner.clean_with(:truncation)
 
-# 1.times { User.create!({name: FFaker::Name.unique.name}) }
-User.create!({ name: 'Darden Callaway' })
-User.create!({ name: 'Clement Hargrave' })
-User.create!({ name: 'Doris Wheeler'} )
-User.create!({ name: 'Cecil George' })
-User.create!({ name: 'Sigrid Dohlman' })
-User.create!({ name: 'Gabrielle Bellini' })
+User.create!({ name: "Jane Doe" })
+User.create!({ name: "John Smith" })
+# 10.times { User.create!({ name: Faker::Name.unique.name }) }
+8.times { User.create!({ name: FFaker::Name.unique.name }) }
 
-causes = ['climate change', 'immigration', 'healthcare', 'women\'s rights', 'minority rights', 'union/workers rights', 'foreign relations', 'economy/taxes/inflation', 'jobs & job creation']
+causes_data = RestClient.get("https://api.cityofnewyork.us/calendar/v1/categories.htm?app_id=#{APP_ID}&app_key=#{EVENTS_API_KEY}")
+parsed_causes = JSON.parse(causes_data)
 
-styles = ['protest demonstration (march or rally)', 'meet-and-greet', 'fundraiser', 'policy discussion/debate', 'conference/convention', 'strategy meeting', 'local campaigning', 'community organizing']
+# causes = parsed_causes.select do |cause|
+#   cause == "Business & Finance" || cause == "City Government Office" || cause == "Cultural" || cause == "Education" || cause == "Environment" || cause == "Health & Public Safety" || cause == "Hearings and Meetings" || cause == "Parks & Recreation" || cause == "Street and Neighborhoood" || cause == "Volunteer"
+# end
 
-
-addresses = [
-  {address: '549 Vale St. Brooklyn, NY 11224', lat: '40.579930', long: '-74.001640'},
-  {address: '815 E. Essex Lane Staten Island, NY 10306', lat: '40.582660', long: '-74.157140'},
-  {address: '90 W 164th St, Bronx, NY 10452', lat: '40.832520', long: '-73.928871'},
-  {address: '24 E. 4th Street New York, NY 10009', lat: '40.724270', long: '-73.984830'},
-  {address: '275 East Pearl Court Brooklyn, NY 11207', lat: '40.659520', long: '-73.922070'},
-  {address: '452 5th Ave New York, NY 10018', lat: '40.752209', long: '-73.982239'},
-  {address: '190 W 100th St New York, NY 10025', lat: '40.796090', long: '-73.968520'},
-  {address: '52 Chambers St New York, NY 10007', lat: '40.713370', long: '-74.005540'},
-  {address: '23-15 Newtown Ave Astoria, NY 11102', lat: '40.769560', long: '-73.922620'},
-  {address: '345 Brook Ave, Bronx, NY 10454', lat: '40.810230', long: '-73.917870'},
-]
-
-addresses.each do |address|
-  Event.create!({cause: causes.sample, style: styles.sample, location: address[:address], lat: address[:lat], long: address[:long], date: Faker::Date.between(Date.parse('04/01/2019'), Date.parse('15/02/2019')), time: Faker::Time.forward(1, :day).strftime('%H:00')})
+@causes = parsed_causes.reject do |cause|
+  cause == "Athletic" || cause == "Featured" || cause == "Free" || cause == "General Events" || cause == "Holidays" || cause == "Kids and Family " || cause == "Tours"
 end
+
+
+def create_events
+  @causes.each do |cause|
+    @cause = cause
+    events_data = RestClient.get("https://www1.nyc.gov/calendar/api/json/search.htm?app_id=#{APP_ID}&app_key=#{EVENTS_API_KEY}&categories=#{@cause}")
+    parsed_events_data = JSON.parse(events_data)
+    parsed_events_data = parsed_events_data["items"]
+    parsed_events_data.each do |parsed_event|
+      if !parsed_event["geometry"]
+        geometry = "none"
+      else
+        geometry = parsed_event["geometry"]
+        Event.create!({cause: cause, style: parsed_event["name"], location: parsed_event["address"], lat: parsed_event["geometry"][0]["lat"], long: parsed_event["geometry"][0]["lng"], date: Date.parse(parsed_event["startDate"]), time: parsed_event["timePart"]})
+      end
+    end
+  end
+end
+
+create_events
+
+
 # location.first.update (then update for each one )
 user_ids = User.all.map {|user| user.id}
 event_ids = Event.all.map {|event| event.id}
 
-# 8.times {
-#   UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample})
-# }
+10.times { UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample}) }
