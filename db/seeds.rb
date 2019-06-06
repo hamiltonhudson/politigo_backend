@@ -55,7 +55,7 @@ create_events
 user_ids = User.all.map {|user| user.id}
 event_ids = Event.all.map {|event| event.id}
 
-10.times { UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample}) }
+30.times { UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample}) }
 
 UserEvent.all.each do |ue|
   ue.user.increase_score
