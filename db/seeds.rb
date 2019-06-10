@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'dotenv'
+require 'ffaker'
 
 APP_ID = ENV['APP_ID']
 EVENTS_API_KEY = ENV['EVENTS_API_KEY']
@@ -14,11 +15,6 @@ GEO_API_KEY = ENV['GEO_API_KEY']
 CITY_API_KEY = ENV['CITY_API_KEY']
 
 DatabaseCleaner.clean_with(:truncation)
-
-User.create!({ name: "Jane Doe" })
-User.create!({ name: "John Smith" })
-# 10.times { User.create!({ name: Faker::Name.unique.name }) }
-8.times { User.create!({ name: FFaker::Name.unique.name }) }
 
 causes_data = RestClient.get("https://api.cityofnewyork.us/calendar/v1/categories.htm?app_id=#{APP_ID}&app_key=#{EVENTS_API_KEY}")
 parsed_causes = JSON.parse(causes_data)
@@ -51,6 +47,8 @@ end
 
 create_events
 
+# 10.times { User.create!({ name: Faker::Name.unique.name }) }
+8.times { User.create!({ name: FFaker::Name.unique.name, email: FFaker::Internet.unique.email, password: "1234" }) }
 
 user_ids = User.all.map {|user| user.id}
 event_ids = Event.all.map {|event| event.id}
