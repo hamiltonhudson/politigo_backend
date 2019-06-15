@@ -15,7 +15,8 @@ GEO_API_KEY = ENV['GEO_API_KEY']
 CITY_API_KEY = ENV['CITY_API_KEY']
 
 DatabaseCleaner.clean_with(:truncation)
-
+# # FFaker::Name.unique.clear
+#
 causes_data = RestClient.get("https://api.cityofnewyork.us/calendar/v1/categories.htm?app_id=#{APP_ID}&app_key=#{EVENTS_API_KEY}")
 parsed_causes = JSON.parse(causes_data)
 
@@ -47,13 +48,18 @@ end
 
 create_events
 
-# 10.times { User.create!({ name: Faker::Name.unique.name }) }
-8.times { User.create!({ name: FFaker::Name.unique.name, email: FFaker::Internet.unique.email, password: "1234" }) }
+10.times do
+  @user_name = FFaker::Name.unique.name
+  @initial = @user_name.split[0].split("")[0]
+  @surname = @user_name.split[1]
+  @user_email = @initial + @surname + "@email" + ".com"
+  User.create!( name: @user_name, email: @user_email, password: "1234" )
+end
 
 user_ids = User.all.map {|user| user.id}
 event_ids = Event.all.map {|event| event.id}
 
-30.times { UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample}) }
+20.times { UserEvent.create!({user_id: user_ids.sample, event_id: event_ids.sample}) }
 
 UserEvent.all.each do |ue|
   ue.user.increase_score

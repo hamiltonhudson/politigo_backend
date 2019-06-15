@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :user_events
   has_many :events, through: :user_events
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :name, uniqueness: false
   validates :email, uniqueness: true
   before_validation :capitalize_name
   validates_associated :events, uniqueness: true
