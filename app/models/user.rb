@@ -12,8 +12,11 @@ class User < ApplicationRecord
   end
 
   def decrease_score
-    self.score -= 10
-    self.save
+    # if self.score > 0
+    if self.score >= 10
+      self.score -= 10
+      self.save
+    end
   end
 
   def capitalize_name

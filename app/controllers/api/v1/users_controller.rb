@@ -13,8 +13,8 @@ class Api::V1::UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-    render json: @user, status: 201
-      end
+      render json: @user, status: 201
+    end
   end
 
 private
