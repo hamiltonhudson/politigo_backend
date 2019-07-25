@@ -44,7 +44,7 @@ and once the terminal says it’s running, navigate to http://localhost:3000. If
 
 ## Demo Video
 
-[PolitiGo.mov](https://drive.google.com/file/d/1eXNeKp4y4GuBRNGw6EdKM_0191XIzOVq/view?usp=sharing)
+[PolitiGo.mov](https://drive.google.com/file/d/1Iur_IMeH89JiArv7ry9qBGJhn9eKyWnE/view?usp=sharing)
 
 ## Authors
 
